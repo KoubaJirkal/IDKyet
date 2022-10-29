@@ -11,15 +11,12 @@ namespace EfcDbInit.Models
     public class Summs
     {
         
-        [Key]
+
         public int Id { get; set; }
-        [Required]
         public string Name { get; set; }
-        [Required]
         public string Password { get; set; }
-        [Required]
         public EnumServers Server { get; set; }
 
-        public ICollection<ChampionsList> Champions { get; set; }
+        public ICollection<Champions> Champions { get; set; }
     }
 }

@@ -10,22 +10,30 @@ using EfcDbInit.Models;
 
 namespace IDKyet.Pages
 {
-    public class RoleModel : PageModel
+    public class ChampionsModel : PageModel
     {
         private readonly EfcDbInit.Data.ApplicationDbContext _context;
 
-        public RoleModel(EfcDbInit.Data.ApplicationDbContext context)
+        public ChampionsModel(EfcDbInit.Data.ApplicationDbContext context)
         {
             _context = context;
         }
 
         public IList<Role> Roles { get; set; } = default!;
+        public IList<Champions> Champions { get; set; } = default!;
+
+
 
         public async Task OnGetAsync()
         {
+            if (_context.Champions != null)
+            {
+                Champions = await _context.Champions.ToListAsync();
+            }
             if (_context.Roles != null)
             {
-                Roles = await _context.Roles.ToListAsync();
+                Roles = await _context.Roles.Include(b => b.Champions).ToListAsync();
+
             }
         }
     }

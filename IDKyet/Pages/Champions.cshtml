@@ -1,0 +1,63 @@
+﻿@page
+@model IDKyet.Pages.ChampionsModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Summs</h1>
+
+<p>
+    <a asp-page="./CreateChampions">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Champions[0].RoleID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Champions[0].Role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Champions[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Champions[0].ChampionsId)
+            </th>
+
+            <th>
+                Champions
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Champions)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role.RoleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChampionsId)
+                </td>
+                <td>
+                    <a asp-page="./Champions" asp-route-id="@item.RoleID">Champions</a>
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.RoleID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.RoleID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.RoleID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

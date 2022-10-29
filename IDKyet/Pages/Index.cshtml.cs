@@ -30,7 +30,8 @@ namespace IDKyet.Pages
             }
             if (_context.Roles != null)
             {
-                Roles = await _context.Roles.ToListAsync();
+                Roles = await _context.Roles.Include(b => b.Champions).ToListAsync();
+                
             }
         }
     }

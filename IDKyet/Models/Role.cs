@@ -10,12 +10,10 @@ namespace EfcDbInit.Models
 {
     public class Role
     {
-        [Key]
         public int RoleID { get; set; }
-        [Required]
         public string RoleName { get; set; }
 
-        public ICollection<ChampionsList> Champions { get; set; }
+        public ICollection<Champions> Champions { get; set; }
         
 
 
